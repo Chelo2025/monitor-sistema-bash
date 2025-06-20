@@ -8,7 +8,7 @@ echo "---------------------------------------------------------"
 
 # Información del sistema
 echo -e "\n🖥️  HOSTNAME: $(hostname)"
-echo "🧠 CPU: $(lscpu | grep 'Model name' | sed 's/Model name:[ \t]*//')"
+echo "🧠 CPU: $(lscpu | grep 'Nombre del modelo' | sed 's/Nombre del modelo:[ \t]*//')"
 echo "💾 RAM total: $(free -h | awk '/Mem:/ {print $2}')"
 echo "💽 Disco total: $(df -h --total | grep total | awk '{print $2}')"
 echo "🖥️ SO: $(lsb_release -d | cut -f2)"
