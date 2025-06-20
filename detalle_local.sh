@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script: detalles_sistema.sh
-# Info general del sistema + usuarios por SSH + intentos fallidos + MACs en red
+# Info general del sistema + usuarios + MACs en red
 
 echo "📋 INFORMACIÓN DEL SISTEMA - $(date '+%Y-%m-%d %H:%M:%S')"
 echo "---------------------------------------------------------"
@@ -25,19 +25,6 @@ uptime -p
 # Usuarios conectados
 echo -e "\n👥 Usuarios conectados (todas las sesiones):"
 who
-
-# Usuarios conectados por SSH
-echo -e "\n🔐 Usuarios conectados por SSH:"
-sshd_sessions=$(who | grep -i 'ssh')
-if [ -z "$sshd_sessions" ]; then
-  echo "Ningún usuario conectado por SSH en este momento."
-else
-  echo "$sshd_sessions"
-fi
-
-# Intentos fallidos de login SSH
-echo -e "\n❌ Intentos fallidos de conexión SSH (últimas 10 entradas):"
-grep "Failed password" /var/log/auth.log 2>/dev/null | tail -n 10 | awk '{print "Fecha: "$1, $2, $3, "Usuario:", $9, "Desde IP:", $11}'
 
 # Dispositivos conocidos en la red local (ARP)
 echo -e "\n📡 Dispositivos en red detectados por ARP:"
