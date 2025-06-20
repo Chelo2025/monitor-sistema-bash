@@ -33,7 +33,7 @@ while true; do
 
   # Procesos que más consumen CPU
   echo -e "\n📌 TOP 5 procesos por uso de CPU:"
-  echo " PID     COMMAND        %CPU   %MEM"
+  # echo " PID     COMMAND        %CPU   %MEM"
   ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head -n 6
 
   sleep 5
